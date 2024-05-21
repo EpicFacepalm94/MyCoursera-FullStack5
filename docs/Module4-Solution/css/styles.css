@@ -1,0 +1,15 @@
+a {
+    font-size: 24px;
+}
+
+a:link {
+    color: blue;
+}
+
+a:visited {
+    color: purple;
+}
+
+li{
+    font-size: 24px;
+}
