@@ -1,12 +1,15 @@
 (
     function(){
         angular.module('Module2', [])
-        .controller('Module2Controller', Module2Controller );
+        .service('ShoppingListCheckOffService', ShoppingListCheckOffService)
+        .controller('ToBuyController', ToBuyController )
+        .controller('AlreadyBoughtController', AlreadyBoughtController );
 
-        Module2Controller.$inject = ['$scope'];
+        
+        function ShoppingListCheckOffService(){
+            var service = this;
 
-        function Module2Controller($scope){
-            $scope.toBuyList = [
+            service.toBuyList = [
                 {
                     name: 'cookies',
                     quantity: 10
@@ -29,24 +32,34 @@
                 }
             ];
 
-            $scope.boughtList = [];
+            service.boughtList = [];
 
-            
-            $scope.toBuyListEmptyMessage = "";
-            $scope.boughtListEmptyMessage = "Nothing is bought!";
 
-            $scope.BuyItem = function(index){
-                $scope.boughtList.push($scope.toBuyList[index]);
-                $scope.toBuyList.splice(index, 1);
-
-                if($scope.toBuyList.length < 1){
-                    $scope.toBuyListEmptyMessage = "Everything is bought!";
-                }
-
-                if($scope.boughtList.length > 0){
-                    $scope.boughtListEmptyMessage = "";
-                }
+            service.BuyItem = function(index){
+                service.boughtList.push(service.toBuyList[index]);
+                service.toBuyList.splice(index, 1);
             }
+
+            service.getToBuyList = function(){return service.toBuyList;}
+
+            service.getBoughtList = function(){return service.boughtList;}
+
+
+        }
+
+        ToBuyController.$inject = ['$scope', 'ShoppingListCheckOffService'];
+        function ToBuyController($scope, service){
+            var buyCtrl = this;
+
+            buyCtrl.items = service.getToBuyList();
+            buyCtrl.BuyItem = service.BuyItem;
+        }
+
+        AlreadyBoughtController.$inject = ['$scope', 'ShoppingListCheckOffService'];
+        function AlreadyBoughtController($scope, service){
+            var boughtCtrl = this;
+
+            boughtCtrl.items = service.getBoughtList();
         }
     }
 )()

@@ -25,30 +25,30 @@
   <script src="angular.min.js"></script>
   <script src="app.js"></script>
 <body>
-  <div class="container" ng-controller="Module2Controller">
+  <div class="container">
   <h1>Shopping List Check Off</h1>
 
   <div class="row">
 
     <!-- To Buy List -->
-    <div class="col-md-6">
+    <div class="col-md-6" ng-controller="ToBuyController as buyCtrl">
      <h2>To Buy:</h2>
      <ol>
-      <li ng-repeat="item in toBuyList">
+      <li ng-repeat="item in buyCtrl.items">
         {{item.quantity}} {{item.name}}
-        <button ng-click="BuyItem($index)">Buy</button>
+        <button ng-click="buyCtrl.BuyItem($index)">Buy</button>
       </li>
      </ol>
-     <div class="emptyMessage">{{toBuyListEmptyMessage}}</div>
+     <div class="emptyMessage" ng-show="buyCtrl.items.length < 1">Everything is bought!</div>
     </div>
 
     <!-- Already Bought List -->
-    <div class="col-md-6">
+    <div class="col-md-6" ng-controller="AlreadyBoughtController as boughtCtrl">
      <h2>Already Bought:</h2>
      <ul>
-      <li ng-repeat="item in boughtList">Bought {{item.quantity}} {{item.name}}</li>
+      <li ng-repeat="item in boughtCtrl.items">Bought {{item.quantity}} {{item.name}}</li>
      </ul>
-     <div class="emptyMessage">{{boughtListEmptyMessage}}</div>
+     <div class="emptyMessage" ng-hide="boughtCtrl.items.length > 1">Nothing is bought!</div>
     </div>
   </div>
 </div>
