@@ -17,6 +17,7 @@
             .state('categories', {
                 url: '/categories',
                 templateUrl: 'templates/categories-state.template.html',
+                controller: 'CategoriesController as CatCtrl',
                 resolve: {
                     menuCategories: ['MenuDataService', function(MenuDataService){
                         return MenuDataService.getAllCategories()
@@ -32,13 +33,14 @@
             .state('items',{
                 url: '/items/{categoryId}',
                 templateUrl: 'templates/items-state.template.html',
+                controller: 'ItemsController as ItemCtrl',
                 resolve:{
                     menuItems:['$stateParams', 'MenuDataService', function($stateParams, MenuDataService){
                         return MenuDataService.getItemsForCategory($stateParams.categoryId)
                         .then(
                             function success(response){
-                                MenuDataService.items = response.data.menu_items;
-                                console.log("Resolving Items Response: ",response);
+                                MenuDataService.items = response.data;
+                                console.log("Resolving Items Response: ", response);
                                 return response;
                             }
                         );

@@ -3,12 +3,11 @@
         'use strict';
 
         angular.module('data')
-        .component('items', {
+        .component('menuItems', {
             bindings: {
                 items: '<'
             },
-            templateUrl: 'templates/items.template.html',
-            controller: 'ItemsController as ItemsCtrl'
+            templateUrl: 'templates/items.template.html'
         });
     }
 )();

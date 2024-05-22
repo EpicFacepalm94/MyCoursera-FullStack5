@@ -16,6 +16,7 @@
                 })
                 .then(
                     function(response){
+                        dataService.categories = response.data;
                         console.log("HTTP Requested Categories Data: ", response.data);
                         return response.data;
                     }
@@ -26,7 +27,14 @@
                 return $http({
                     method: "GET",
                     url: (ApiBasePath + "/menu_items/" + categoryShortName + ".json")
-                });
+                })
+                .then(
+                    function(response){
+                        dataService.items = response;
+                        console.log("HTTP Requested Items Data: ", response);
+                        return response;
+                    }
+                );
             };
         }
     }

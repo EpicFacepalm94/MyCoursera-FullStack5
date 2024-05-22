@@ -7,8 +7,7 @@
             templateUrl: "templates/categories.template.html",
             bindings: {
                 menuCategories: '<'
-            },
-            controller: 'CategoriesController as CatCtrl'
+            }
         });
     }
 )();
