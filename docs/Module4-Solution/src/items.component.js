@@ -8,7 +8,7 @@
                 items: '<'
             },
             templateUrl: 'templates/items.template.html',
-            controller: 'ItemsController as $ctrl'
+            controller: 'ItemsController as ItemsCtrl'
         });
     }
 )();

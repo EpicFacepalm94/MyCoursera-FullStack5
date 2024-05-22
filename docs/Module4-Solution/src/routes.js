@@ -18,8 +18,14 @@
                 url: '/categories',
                 templateUrl: 'templates/categories-state.template.html',
                 resolve: {
-                    categories: ['MenuDataService', function(MenuDataService){
-                        return MenuDataService.getAllCategories();
+                    menuCategories: ['MenuDataService', function(MenuDataService){
+                        return MenuDataService.getAllCategories()
+                        .then(
+                            function success(response){
+                                console.log("Resolving Categories Response: ", response);
+                                return response;
+                            }
+                        );
                     }]
                 }
             })
@@ -27,8 +33,15 @@
                 url: '/items/{categoryId}',
                 templateUrl: 'templates/items-state.template.html',
                 resolve:{
-                    items:['$stateParams', 'MenuDataService', function($stateParams, MenuDataService){
-                        return MenuDataService.getItemsForCategory($stateParams.categoryId);
+                    menuItems:['$stateParams', 'MenuDataService', function($stateParams, MenuDataService){
+                        return MenuDataService.getItemsForCategory($stateParams.categoryId)
+                        .then(
+                            function success(response){
+                                MenuDataService.items = response.data.menu_items;
+                                console.log("Resolving Items Response: ",response);
+                                return response;
+                            }
+                        );
                     }]
                 }
             });

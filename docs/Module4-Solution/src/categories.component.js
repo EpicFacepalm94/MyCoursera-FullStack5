@@ -6,9 +6,9 @@
         .component('categories', {
             templateUrl: "templates/categories.template.html",
             bindings: {
-                categories: '<',
+                menuCategories: '<'
             },
-            controller: 'CategoriesController as $ctrl'
+            controller: 'CategoriesController as CatCtrl'
         });
     }
 )();

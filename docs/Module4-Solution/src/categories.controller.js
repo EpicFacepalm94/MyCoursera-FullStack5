@@ -2,13 +2,14 @@
     function(){
         'use strict';
 
-        angular.module('data')
+        angular.module('MenuApp')
         .controller('CategoriesController', CategoriesController);
 
-        CategoriesController.$inject = ['MenuDataService'];
-        function CategoriesController(MenuDataService){
-            var $ctrl = this;
-            $ctrl.categories = MenuDataService.categories;
+        CategoriesController.$inject = ['menuCategories'];
+        function CategoriesController(menuCategories){
+            console.log("CategoriesController Import: ", menuCategories);
+            var CatCtrl = this;
+            CatCtrl.categories = menuCategories;
         }
     }
 )();
