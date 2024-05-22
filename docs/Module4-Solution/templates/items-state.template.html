@@ -3,4 +3,9 @@
 <a ui-sref="home">Home</a><br>
 <a ui-sref="categories">Categories</a><br>
 
-<items></items>
+<h2>{{ItemCtrl.items.category.name}} Menu Items</h2><br>
+<ul>
+    <li ng-repeat="item in ItemCtrl.items.menu_items">
+        {{item.name}} - {{item.short_name}} : {{item.description}}
+    </li>
+</ul>

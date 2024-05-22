@@ -2,5 +2,10 @@
 
 <a ui-sref="home">Home</a><br>
 <a>Categories</a><br>
+<ul>
+    <li ng-repeat="category in CatCtrl.menuCategories">
+        <a ui-sref="items({categoryId:category.short_name})">{{category.name}} {{category.description}}</a>
+    </li>
+</ul>
+<!--<a ui-sref="items({categoryId:category.short_name})" href="items/{{category.short_name}}"> </a>-->
 
-<categories></categories>

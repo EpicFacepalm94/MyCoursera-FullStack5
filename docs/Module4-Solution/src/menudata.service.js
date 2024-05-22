@@ -30,9 +30,9 @@
                 })
                 .then(
                     function(response){
-                        dataService.items = response;
+                        dataService.items = response.data;
                         //console.log("HTTP Requested Items Data: ", response);
-                        return response;
+                        return response.data;
                     }
                 );
             };
