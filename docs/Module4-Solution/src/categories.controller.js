@@ -7,9 +7,9 @@
 
         CategoriesController.$inject = ['menuCategories'];
         function CategoriesController(menuCategories){
-            console.log("CategoriesController Import: ", menuCategories);
             var CatCtrl = this;
-            CatCtrl.categories = menuCategories;
+            CatCtrl.menuCategories = menuCategories;
+            console.log("CategoriesController Import: ", CatCtrl.menuCategories);
         }
     }
 )();

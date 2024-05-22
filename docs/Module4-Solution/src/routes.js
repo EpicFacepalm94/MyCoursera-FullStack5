@@ -23,7 +23,6 @@
                         return MenuDataService.getAllCategories()
                         .then(
                             function success(response){
-                                console.log("Resolving Categories Response: ", response);
                                 return response;
                             }
                         );
@@ -40,7 +39,7 @@
                         .then(
                             function success(response){
                                 MenuDataService.items = response.data;
-                                console.log("Resolving Items Response: ", response);
+                                //console.log("Resolving Items Response: ", response);
                                 return response;
                             }
                         );

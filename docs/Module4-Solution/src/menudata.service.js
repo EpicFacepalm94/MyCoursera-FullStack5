@@ -17,7 +17,7 @@
                 .then(
                     function(response){
                         dataService.categories = response.data;
-                        console.log("HTTP Requested Categories Data: ", response.data);
+                        //console.log("HTTP Requested Categories Data: ", response.data);
                         return response.data;
                     }
                 );
@@ -31,7 +31,7 @@
                 .then(
                     function(response){
                         dataService.items = response;
-                        console.log("HTTP Requested Items Data: ", response);
+                        //console.log("HTTP Requested Items Data: ", response);
                         return response;
                     }
                 );

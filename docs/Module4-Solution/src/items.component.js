@@ -3,9 +3,9 @@
         'use strict';
 
         angular.module('data')
-        .component('menuItems', {
+        .component('items', {
             bindings: {
-                items: '<'
+                menuItems: '<'
             },
             templateUrl: 'templates/items.template.html'
         });
