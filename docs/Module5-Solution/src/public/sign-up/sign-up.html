@@ -1,0 +1,75 @@
+<div class="container">
+    <form name="signUpForm" novalidate>
+        <div class="sign-up-input input-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <label for="firstName">Enter Your First Name:</label>
+            <input name="firstName"
+                id="firstName"
+                type="text"
+                class="form-control"
+                placeholder="First Name"
+                aria-describedby="basic-addon2"
+                required ng-model="signCtrl.firstName">
+        </div>
+        
+        <div class="sign-up-input input-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <label for="lastName">Enter Your Last Name:</label>
+            <input name="lastName"
+                id="lastName"
+                type="text"
+                class="form-control"
+                placeholder="Last Name"
+                aria-describedby="basic-addon2"
+                required ng-model="signCtrl.lastName">
+        </div>
+        
+        <div class="sign-up-input input-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <label for="email">Enter Your Email:</label>
+            <input name="email"
+                id="email"
+                type="text"
+                class="form-control"
+                placeholder="Email"
+                aria-describedby="basic-addon2"
+                required ng-model="signCtrl.email">
+        </div>
+        
+        <div class="sign-up-input input-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <label for="phone">Enter Your Phone #:</label>
+            <input name="phone"
+                id="phone"
+                type="tel"
+                class="form-control"
+                placeholder="Phone ###-###-####"
+                pattern="(\d{3})-(\d{3})-(\d{4})"
+                aria-describedby="basic-addon2"
+                required ng-model="signCtrl.phone">
+        </div>
+        
+        <div class="sign-up-input input-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <label for="menuItem">Enter Your Favorite Category:</label>
+            <input name="menuItem"
+                id="menuItem"
+                type="text"
+                class="form-control"
+                placeholder="Menu Item Number"
+                aria-describedby="basic-addon2"
+                required ng-model="signCtrl.menuItem"
+                ng-change="signCtrl.CheckItem()">
+        </div>
+
+        <div class="sign-up-input input-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <button name="button"
+            class="btn btn-default"
+            id="button"
+            type="button"
+            ng-disabled="signUpForm.$invalid"
+            ng-click="signCtrl.SignUp()">Sign Up</button>
+            
+        </div>
+
+        <div>
+            <span class="custom-notification" ng-if="signCtrl.invalidItem && signUpForm.item.$touched">Item Entered Doesn't Exist!</span>
+            <span class="custom-notification" ng-if="signCtrl.signedUp"><br>Your Information Has Been Saved!</span>
+        </div>
+    </form>
+</div>

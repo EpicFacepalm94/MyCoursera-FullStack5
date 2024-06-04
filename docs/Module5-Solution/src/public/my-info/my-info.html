@@ -1,0 +1,16 @@
+<div class="container">
+    <h2 class="text-center">My Info</h2>
+
+    <div class="custom-notification col-xs-6 col-sm-6 col-md-6 col-lg-6" ng-if="!infoCtrl.signedUp">Not Signed Up Yet.<br><a ui-sref="public.signup">Sign up Now!</a></div>
+
+    <div class="custom-notification col-xs-6 col-sm-6 col-md-6 col-lg-6" ng-if="infoCtrl.signedUp">
+        <h3>Name: {{infoCtrl.firstName}} {{infoCtrl.lastName}}</h3>
+        <h3>Phone #: {{infoCtrl.phone}}</h3>
+        <h3>E-Mail: {{infoCtrl.email}}</h3>
+        <h3>Menu Item: {{infoCtrl.menuItem.name}}</h3>
+        <img class="img-responsive" width="250" height="150" ng-src="images/menu/{{infoCtrl.category}}/{{infoCtrl.menuItem.short_name}}.jpg" alt="{{$ctrl.menuItem.name}}">
+        <p>Large: ${{infoCtrl.menuItem.price_large}}</p>
+        <p>Small: ${{infoCtrl.menuItem.price_small}}</p>
+        <p>Description{{infoCtrl.menuItem.description}}</p>
+    </div>
+</div>
